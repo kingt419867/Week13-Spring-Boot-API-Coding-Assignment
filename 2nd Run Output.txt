@@ -1,0 +1,53 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.4.4)
+
+2025-04-05T21:10:30.920-04:00  INFO 2164 --- [           main] pet.store.PetStoreApplication            : Starting PetStoreApplication using Java 21.0.5 with PID 2164 (C:\Users\kingt\eclipse-workspace\PetStore\target\classes started by kingt in C:\Users\kingt\eclipse-workspace\PetStore)
+2025-04-05T21:10:30.928-04:00  INFO 2164 --- [           main] pet.store.PetStoreApplication            : No active profile set, falling back to 1 default profile: "default"
+2025-04-05T21:10:32.507-04:00  INFO 2164 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-05T21:10:32.566-04:00  INFO 2164 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 0 JPA repository interfaces.
+2025-04-05T21:10:33.716-04:00  INFO 2164 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-05T21:10:33.756-04:00  INFO 2164 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-05T21:10:33.758-04:00  INFO 2164 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-05T21:10:33.873-04:00  INFO 2164 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-05T21:10:33.875-04:00  INFO 2164 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2815 ms
+2025-04-05T21:10:34.246-04:00  INFO 2164 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-05T21:10:34.387-04:00  INFO 2164 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.11.Final
+2025-04-05T21:10:34.455-04:00  INFO 2164 --- [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-05T21:10:34.967-04:00  INFO 2164 --- [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-05T21:10:35.022-04:00  INFO 2164 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-05T21:10:35.794-04:00  INFO 2164 --- [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3c3e363
+2025-04-05T21:10:35.797-04:00  INFO 2164 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-05T21:10:35.995-04:00  INFO 2164 --- [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.41
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-04-05T21:10:37.634-04:00  INFO 2164 --- [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: alter table employee drop foreign key FK32fcj9ap6a9ljvwrercgmua20
+Hibernate: alter table pet_store_customer drop foreign key FK3ek9sm1xi7qu3o1as4ln3alat
+Hibernate: alter table pet_store_customer drop foreign key FKlpdwp26kaurdqxrxg7ir6h05e
+Hibernate: drop table if exists customer
+Hibernate: drop table if exists employee
+Hibernate: drop table if exists pet_store_customer
+Hibernate: drop table if exists pet_store
+Hibernate: create table customer (customer_id bigint not null auto_increment, customer_email varchar(255), customer_first_name varchar(255), customer_last_name varchar(255), primary key (customer_id)) engine=InnoDB
+Hibernate: create table employee (employee_id bigint not null auto_increment, pet_store_id bigint, employee_first_name varchar(255), employee_job_title varchar(255), employee_last_name varchar(255), employee_phone varchar(255), primary key (employee_id)) engine=InnoDB
+Hibernate: create table pet_store_customer (customer_id bigint not null, pet_store_id bigint not null, primary key (customer_id, pet_store_id)) engine=InnoDB
+Hibernate: create table pet_store (pet_store_id bigint not null auto_increment, pet_store_address varchar(255), pet_store_city varchar(255), pet_store_name varchar(255), pet_store_phone varchar(255), pet_store_state varchar(255), pet_store_zip varchar(255), primary key (pet_store_id)) engine=InnoDB
+Hibernate: alter table employee add constraint FK32fcj9ap6a9ljvwrercgmua20 foreign key (pet_store_id) references pet_store (pet_store_id)
+Hibernate: alter table pet_store_customer add constraint FK3ek9sm1xi7qu3o1as4ln3alat foreign key (customer_id) references customer (customer_id)
+Hibernate: alter table pet_store_customer add constraint FKlpdwp26kaurdqxrxg7ir6h05e foreign key (pet_store_id) references pet_store (pet_store_id)
+2025-04-05T21:10:38.108-04:00  INFO 2164 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-05T21:10:38.233-04:00  WARN 2164 --- [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-05T21:10:39.289-04:00  INFO 2164 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-05T21:10:39.312-04:00  INFO 2164 --- [           main] pet.store.PetStoreApplication            : Started PetStoreApplication in 9.35 seconds (process running for 10.195)
